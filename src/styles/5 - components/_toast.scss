@@ -6,8 +6,8 @@
   animation: slideInToast 3s ease;
   padding: $s-size $m-size;
   border: 1px solid $border-color-focus;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-  z-index: map-get($z-index, 'toast');
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: map-get($z-index, "toast");
 
   @include mobile {
     width: 80%;
@@ -29,7 +29,9 @@
   padding: $m-size;
   background: lighten($red, 40%);
 
-  .toast-msg { color: $red; }
+  .toast-msg {
+    color: $red;
+  }
 }
 
 .toast-info {
@@ -38,7 +40,9 @@
   padding: $m-size;
   background: lighten($yellow, 45%);
 
-  .toast-msg { color: $yellow; }
+  .toast-msg {
+    color: $yellow;
+  }
 }
 
 .toast-success {
@@ -47,7 +51,9 @@
   padding: $m-size;
   background: lighten($green, 60%);
 
-  .toast-msg { color: $green; }
+  .toast-msg {
+    color: $green;
+  }
 }
 
 @keyframes slideInToast {

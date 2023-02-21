@@ -1,60 +1,68 @@
-import { FacebookOutlined, GithubFilled, GoogleOutlined } from '@ant-design/icons';
-import PropType from 'prop-types';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { signInWithFacebook, signInWithGithub, signInWithGoogle } from '@/redux/actions/authActions';
+import {
+  FacebookOutlined,
+  GithubFilled,
+  GoogleOutlined
+} from '@ant-design/icons'
+import PropType from 'prop-types'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import {
+  signInWithFacebook,
+  signInWithGithub,
+  signInWithGoogle
+} from '@/redux/actions/authActions'
 
 const SocialLogin = ({ isLoading }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onSignInWithGoogle = () => {
-    dispatch(signInWithGoogle());
-  };
+    dispatch(signInWithGoogle())
+  }
 
   const onSignInWithFacebook = () => {
-    dispatch(signInWithFacebook());
-  };
+    dispatch(signInWithFacebook())
+  }
 
   const onSignInWithGithub = () => {
-    dispatch(signInWithGithub());
-  };
+    dispatch(signInWithGithub())
+  }
 
   return (
-    <div className="auth-provider">
+    <div className='auth-provider'>
       <button
-        className="button auth-provider-button provider-facebook"
+        className='button auth-provider-button provider-facebook'
         disabled={isLoading}
         onClick={onSignInWithFacebook}
-        type="button"
+        type='button'
       >
         {/* <i className="fab fa-facebook" /> */}
         <FacebookOutlined />
         Continue with Facebook
       </button>
       <button
-        className="button auth-provider-button provider-google"
+        className='button auth-provider-button provider-google'
         disabled={isLoading}
         onClick={onSignInWithGoogle}
-        type="button"
+        type='button'
       >
         <GoogleOutlined />
         Continue with Google
       </button>
       <button
-        className="button auth-provider-button provider-github"
+        className='button auth-provider-button provider-github'
         disabled={isLoading}
         onClick={onSignInWithGithub}
-        type="button"
+        type='button'
       >
         <GithubFilled />
         Continue with GitHub
       </button>
     </div>
-  );
-};
+  )
+}
 
 SocialLogin.propTypes = {
   isLoading: PropType.bool.isRequired
-};
+}
 
-export default SocialLogin;
+export default SocialLogin

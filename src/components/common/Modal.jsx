@@ -1,6 +1,6 @@
-import PropType from 'prop-types';
-import React from 'react';
-import AppModal from 'react-modal';
+import PropType from 'prop-types'
+import React from 'react'
+import AppModal from 'react-modal'
 
 const Modal = ({
   isOpen,
@@ -25,14 +25,14 @@ const Modal = ({
       animation: 'scale .3s ease',
       ...overrideStyle
     }
-  };
+  }
 
-  AppModal.setAppElement('#app');
+  AppModal.setAppElement('#app')
 
   return (
     <AppModal
       closeTimeoutMS={300}
-      contentLabel="Product Modal"
+      contentLabel='Product Modal'
       isOpen={isOpen}
       onAfterOpen={afterOpenModal}
       onRequestClose={onRequestClose}
@@ -41,13 +41,13 @@ const Modal = ({
     >
       {children}
     </AppModal>
-  );
-};
+  )
+}
 
 Modal.defaultProps = {
   overrideStyle: {},
-  afterOpenModal: () => { }
-};
+  afterOpenModal: () => {}
+}
 
 Modal.propTypes = {
   isOpen: PropType.bool.isRequired,
@@ -55,10 +55,8 @@ Modal.propTypes = {
   afterOpenModal: PropType.func,
   // eslint-disable-next-line react/forbid-prop-types
   overrideStyle: PropType.object,
-  children: PropType.oneOfType([
-    PropType.arrayOf(PropType.node),
-    PropType.node
-  ]).isRequired
-};
+  children: PropType.oneOfType([PropType.arrayOf(PropType.node), PropType.node])
+    .isRequired
+}
 
-export default Modal;
+export default Modal
