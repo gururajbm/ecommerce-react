@@ -1,5 +1,5 @@
-import PropType from 'prop-types';
-import React from 'react';
+import PropType from 'prop-types'
+import React from 'react'
 
 const Tick = ({ tick, count, format }) => (
   <div>
@@ -27,7 +27,7 @@ const Tick = ({ tick, count, format }) => (
       {format(tick.value)}
     </div>
   </div>
-);
+)
 
 Tick.propTypes = {
   tick: PropType.shape({
@@ -37,10 +37,10 @@ Tick.propTypes = {
   }).isRequired,
   count: PropType.number.isRequired,
   format: PropType.func
-};
+}
 
 Tick.defaultProps = {
   format: (d) => d
-};
+}
 
-export default Tick;
+export default Tick

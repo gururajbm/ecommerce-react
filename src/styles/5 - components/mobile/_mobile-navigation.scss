@@ -5,8 +5,8 @@
   left: 0;
   // background: $background-color;
   background: #fff;
-  z-index: map-get($z-index, 'navigation');
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+  z-index: map-get($z-index, "navigation");
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-navigation-main {
@@ -55,7 +55,7 @@
 
 .mobile-navigation-logo {
   flex-grow: 1;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
   margin-right: $xl-size;
 }
 
@@ -69,6 +69,6 @@
 }
 
 .mobile-navigation-search-title {
-  margin: .6rem;
+  margin: 0.6rem;
   font-weight: normal;
 }

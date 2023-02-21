@@ -1,53 +1,54 @@
-import PropType from 'prop-types';
-import React, { Component } from 'react';
+import PropType from 'prop-types'
+import React, { Component } from 'react'
 
 class Handle extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       mouseOver: false
-    };
+    }
   }
 
-
-  onMouseEnter() {
-    this.setState({ mouseOver: true });
+  onMouseEnter () {
+    this.setState({ mouseOver: true })
   }
 
-  onMouseLeave() {
-    this.setState({ mouseOver: false });
+  onMouseLeave () {
+    this.setState({ mouseOver: false })
   }
 
-  render() {
+  render () {
     const {
       domain: [min, max],
       handle: { id, value, percent },
       isActive,
       disabled,
       getHandleProps
-    } = this.props;
-    const { mouseOver } = this.state;
+    } = this.props
+    const { mouseOver } = this.state
 
     return (
       <>
-        {(mouseOver || isActive) && !disabled ? (
-          <div
-            style={{
-              left: `${percent}%`,
-              position: 'absolute',
-              marginLeft: '-11px',
-              marginTop: '-35px'
-            }}
-          >
-            <div className="tooltip">
-              <span className="tooltiptext">
-                Value:
-                {value}
-              </span>
+        {(mouseOver || isActive) && !disabled
+          ? (
+            <div
+              style={{
+                left: `${percent}%`,
+                position: 'absolute',
+                marginLeft: '-11px',
+                marginTop: '-35px'
+              }}
+            >
+              <div className='tooltip'>
+                <span className='tooltiptext'>
+                  Value:
+                  {value}
+                </span>
+              </div>
             </div>
-          </div>
-        ) : null}
+            )
+          : null}
         <div
           style={{
             left: `${percent}%`,
@@ -68,11 +69,11 @@ class Handle extends Component {
           })}
         />
         <div
-          role="slider"
+          role='slider'
           aria-valuemin={min}
           aria-valuemax={max}
           aria-valuenow={value}
-          label="Slider"
+          label='Slider'
           style={{
             left: `${percent}%`,
             position: 'absolute',
@@ -88,7 +89,7 @@ class Handle extends Component {
           }}
         />
       </>
-    );
+    )
   }
 }
 
@@ -103,10 +104,10 @@ Handle.propTypes = {
   getHandleProps: PropType.func.isRequired,
   isActive: PropType.bool.isRequired,
   disabled: PropType.bool
-};
+}
 
 Handle.defaultProps = {
   disabled: false
-};
+}
 
-export default Handle;
+export default Handle

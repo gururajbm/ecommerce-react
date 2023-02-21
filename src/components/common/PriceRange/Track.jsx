@@ -1,9 +1,7 @@
-import PropType from 'prop-types';
-import React from 'react';
+import PropType from 'prop-types'
+import React from 'react'
 
-const Track = ({
-  source, target, getTrackProps, disabled
-}) => (
+const Track = ({ source, target, getTrackProps, disabled }) => (
   <div
     style={{
       position: 'absolute',
@@ -19,7 +17,7 @@ const Track = ({
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...getTrackProps()}
   />
-);
+)
 
 Track.propTypes = {
   source: PropType.shape({
@@ -34,11 +32,10 @@ Track.propTypes = {
   }).isRequired,
   getTrackProps: PropType.func.isRequired,
   disabled: PropType.bool
-};
+}
 
 Track.defaultProps = {
   disabled: false
-};
+}
 
-
-export default Track;
+export default Track

@@ -1,6 +1,6 @@
-import { SIGNIN_SUCCESS, SIGNOUT_SUCCESS } from '@/constants/constants';
+import { SIGNIN_SUCCESS, SIGNOUT_SUCCESS } from '@/constants/constants'
 
-const initState = null;
+const initState = null
 // {
 // id: 'test-123',
 // role: 'ADMIN',
@@ -14,10 +14,10 @@ export default (state = initState, action) => {
         id: action.payload.id,
         role: action.payload.role,
         provider: action.payload.provider
-      };
+      }
     case SIGNOUT_SUCCESS:
-      return null;
+      return null
     default:
-      return state;
+      return state
   }
-};
+}

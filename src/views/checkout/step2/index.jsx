@@ -1,20 +1,20 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
-import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
-import { Boundary } from '@/components/common';
-import { CHECKOUT_STEP_1, CHECKOUT_STEP_3 } from '@/constants/routes';
-import { Form, Formik } from 'formik';
-import { useDocumentTitle, useScrollTop } from '@/hooks';
-import PropType from 'prop-types';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { setShippingDetails } from '@/redux/actions/checkoutActions';
-import * as Yup from 'yup';
-import { StepTracker } from '../components';
-import withCheckout from '../hoc/withCheckout';
-import ShippingForm from './ShippingForm';
-import ShippingTotal from './ShippingTotal';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { Boundary } from '@/components/common'
+import { CHECKOUT_STEP_1, CHECKOUT_STEP_3 } from '@/constants/routes'
+import { Form, Formik } from 'formik'
+import { useDocumentTitle, useScrollTop } from '@/hooks'
+import PropType from 'prop-types'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { setShippingDetails } from '@/redux/actions/checkoutActions'
+import * as Yup from 'yup'
+import { StepTracker } from '../components'
+import withCheckout from '../hoc/withCheckout'
+import ShippingForm from './ShippingForm'
+import ShippingTotal from './ShippingTotal'
 
 const FormSchema = Yup.object().shape({
   fullname: Yup.string()
@@ -24,8 +24,7 @@ const FormSchema = Yup.object().shape({
   email: Yup.string()
     .email('Email is not valid.')
     .required('Email is required.'),
-  address: Yup.string()
-    .required('Shipping address is required.'),
+  address: Yup.string().required('Shipping address is required.'),
   mobile: Yup.object()
     .shape({
       country: Yup.string(),
@@ -36,13 +35,13 @@ const FormSchema = Yup.object().shape({
     .required('Mobile number is required.'),
   isInternational: Yup.boolean(),
   isDone: Yup.boolean()
-});
+})
 
 const ShippingDetails = ({ profile, shipping, subtotal }) => {
-  useDocumentTitle('Check Out Step 2 | Salinaka');
-  useScrollTop();
-  const dispatch = useDispatch();
-  const history = useHistory();
+  useDocumentTitle('Check Out Step 2 | Salinaka')
+  useScrollTop()
+  const dispatch = useDispatch()
+  const history = useHistory()
 
   const initFormikValues = {
     fullname: shipping.fullname || profile.fullname || '',
@@ -51,26 +50,28 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
     mobile: shipping.mobile || profile.mobile || {},
     isInternational: shipping.isInternational || false,
     isDone: shipping.isDone || false
-  };
+  }
 
   const onSubmitForm = (form) => {
-    dispatch(setShippingDetails({
-      fullname: form.fullname,
-      email: form.email,
-      address: form.address,
-      mobile: form.mobile,
-      isInternational: form.isInternational,
-      isDone: true
-    }));
-    history.push(CHECKOUT_STEP_3);
-  };
+    dispatch(
+      setShippingDetails({
+        fullname: form.fullname,
+        email: form.email,
+        address: form.address,
+        mobile: form.mobile,
+        isInternational: form.isInternational,
+        isDone: true
+      })
+    )
+    history.push(CHECKOUT_STEP_3)
+  }
 
   return (
     <Boundary>
-      <div className="checkout">
+      <div className='checkout'>
         <StepTracker current={2} />
-        <div className="checkout-step-2">
-          <h3 className="text-center">Shipping Details</h3>
+        <div className='checkout-step-2'>
+          <h3 className='text-center'>Shipping Details</h3>
           <Formik
             initialValues={initFormikValues}
             validateOnChange
@@ -85,22 +86,17 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
                 <ShippingTotal subtotal={subtotal} />
                 <br />
                 {/*  ----- NEXT/PREV BUTTONS --------- */}
-                <div className="checkout-shipping-action">
+                <div className='checkout-shipping-action'>
                   <button
-                    className="button button-muted"
+                    className='button button-muted'
                     onClick={() => history.push(CHECKOUT_STEP_1)}
-                    type="button"
+                    type='button'
                   >
                     <ArrowLeftOutlined />
-                    &nbsp;
-                    Go Back
+                    &nbsp; Go Back
                   </button>
-                  <button
-                    className="button button-icon"
-                    type="submit"
-                  >
-                    Next Step
-                    &nbsp;
+                  <button className='button button-icon' type='submit'>
+                    Next Step &nbsp;
                     <ArrowRightOutlined />
                   </button>
                 </div>
@@ -110,8 +106,8 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
         </div>
       </div>
     </Boundary>
-  );
-};
+  )
+}
 
 ShippingDetails.propTypes = {
   subtotal: PropType.number.isRequired,
@@ -129,6 +125,6 @@ ShippingDetails.propTypes = {
     isInternational: PropType.bool,
     isDone: PropType.bool
   }).isRequired
-};
+}
 
-export default withCheckout(ShippingDetails);
+export default withCheckout(ShippingDetails)

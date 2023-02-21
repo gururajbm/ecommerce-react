@@ -1,20 +1,23 @@
-import PropType from 'prop-types';
-import React, { useState } from 'react';
-import {
-  Handles, Rail, Slider, Ticks, Tracks
-} from 'react-compound-slider';
-import Handle from './Handle';
-import SliderRail from './SliderRail';
-import Tick from './Tick';
-import Track from './Track';
+import PropType from 'prop-types'
+import React, { useState } from 'react'
+import { Handles, Rail, Slider, Ticks, Tracks } from 'react-compound-slider'
+import Handle from './Handle'
+import SliderRail from './SliderRail'
+import Tick from './Tick'
+import Track from './Track'
 
 const sliderStyle = {
   position: 'relative',
   width: '100%'
-};
+}
 
 const PriceRange = ({
-  min, max, initMin, initMax, productsCount, onPriceChange
+  min,
+  max,
+  initMin,
+  initMax,
+  productsCount,
+  onPriceChange
 }) => {
   const [state, setState] = useState({
     domain: [min, max],
@@ -24,33 +27,41 @@ const PriceRange = ({
     inputMax: initMax || max,
     inputError: false,
     reversed: false
-  });
+  })
 
   const onUpdate = (update) => {
     setState(() => ({
-      ...state, update, inputMin: update[0], inputMax: update[1]
-    }));
-  };
+      ...state,
+      update,
+      inputMin: update[0],
+      inputMax: update[1]
+    }))
+  }
 
   const onChange = (values) => {
     setState(() => ({
-      ...state, values, inputMin: values[0], inputMax: values[1]
-    }));
-    if (values[0] < values[1]) onPriceChange(...values);
-  };
+      ...state,
+      values,
+      inputMin: values[0],
+      inputMax: values[1]
+    }))
+    if (values[0] < values[1]) onPriceChange(...values)
+  }
 
-
-  const inputClassName = () => (state.inputError ? 'price-range-input price-input-error' : 'price-range-input');
+  const inputClassName = () =>
+    state.inputError
+      ? 'price-range-input price-input-error'
+      : 'price-range-input'
 
   return (
     <div style={{ height: 120, width: '100%' }}>
-      <div className="price-range-control">
+      <div className='price-range-control'>
         <input
           className={inputClassName()}
           disabled={productsCount === 0}
           max={max}
           min={min}
-          type="number"
+          type='number'
           readOnly
           value={state.inputMin}
         />
@@ -60,7 +71,7 @@ const PriceRange = ({
           disabled={productsCount === 0}
           max={max}
           min={min}
-          type="number"
+          type='number'
           readOnly
           value={state.inputMax}
         />
@@ -79,7 +90,7 @@ const PriceRange = ({
         </Rail>
         <Handles>
           {({ handles, activeHandleID, getHandleProps }) => (
-            <div className="slider-handles">
+            <div className='slider-handles'>
               {handles.map((handle) => (
                 <Handle
                   key={handle.id}
@@ -94,7 +105,7 @@ const PriceRange = ({
         </Handles>
         <Tracks left={false} right={false}>
           {({ tracks, getTrackProps }) => (
-            <div className="slider-tracks">
+            <div className='slider-tracks'>
               {tracks.map(({ id, source, target }) => (
                 <Track
                   key={id}
@@ -108,7 +119,7 @@ const PriceRange = ({
         </Tracks>
         <Ticks count={5}>
           {({ ticks }) => (
-            <div className="slider-ticks">
+            <div className='slider-ticks'>
               {ticks.map((tick) => (
                 <Tick key={tick.id} tick={tick} count={ticks.length} />
               ))}
@@ -117,13 +128,13 @@ const PriceRange = ({
         </Ticks>
       </Slider>
     </div>
-  );
-};
+  )
+}
 
 PriceRange.defaultProps = {
   initMin: undefined,
   initMax: undefined
-};
+}
 
 PriceRange.propTypes = {
   initMin: PropType.number,
@@ -132,6 +143,6 @@ PriceRange.propTypes = {
   max: PropType.number.isRequired,
   productsCount: PropType.number.isRequired,
   onPriceChange: PropType.func.isRequired
-};
+}
 
-export default PriceRange;
+export default PriceRange
